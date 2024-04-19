@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using OctaMeet.Areas.Identity.Data;
 using OctaMeet.Data;
 using OctaMeet.FileUpload;
+using OctaMeet.Models;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("OctaMeetDbContextConnection") ?? throw new InvalidOperationException("Connection string 'OctaMeetDbContextConnection' not found.");
 
 builder.Services.AddDbContext<OctaMeetDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<MeetingDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<OctaMeetUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<OctaMeetDbContext>();
 
