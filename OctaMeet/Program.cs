@@ -8,7 +8,7 @@ var connectionString = builder.Configuration.GetConnectionString("OctaMeetDbCont
 
 builder.Services.AddDbContext<OctaMeetDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddDefaultIdentity<OctaMeetUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<OctaMeetDbContext>();
+builder.Services.AddDefaultIdentity<OctaMeetUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<OctaMeetDbContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
