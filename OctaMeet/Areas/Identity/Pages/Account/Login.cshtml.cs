@@ -89,7 +89,7 @@ namespace OctaMeet.Areas.Identity.Pages.Account
         {
             if (User.Identity.IsAuthenticated)
             {
-                Response.Redirect("/");
+                Response.Redirect("/Meeting/");
             }
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
