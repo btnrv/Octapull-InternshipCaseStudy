@@ -1,0 +1,66 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Areas/Identity/Pages/_Layout.cshtml";
+}
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Hesap oluştur.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Name" class="form-control" autocomplete="name" aria-required="true" placeholder="İsim" />
+                        <label asp-for="Input.Name">İsim</label>
+                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                    </div>
+                </div>
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Surname" class="form-control" autocomplete="name" aria-required="true" placeholder="İsim" />
+                <label asp-for="Input.Surname">Soyisim</label>
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div>
+        </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Input.Phone" class="form-control" autocomplete="off" aria-required="true" placeholder="phone" />
+        <label asp-for="Input.Phone">Telefon Numarası</label>
+        <span asp-validation-for="Input.Phone" class="text-danger"></span>
+    </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password">Şifre</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword">Şifre Doğrula</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <from method="post" enctype="multipart/form-data">
+                    <div>
+                        <label class="form-label">Profil fotoğrafı yükle</label>
+                        <input type="file" name="profilepicture" accept="image/png, image/jpeg" />
+                    </div>
+                </from>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div>
+                @if (!string.IsNullOrWhiteSpace(Model.FilePath))
+                {   
+                <img src="@Model.FilePath" alt="Alternate text" />
+                }
+            </div>
+        </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
